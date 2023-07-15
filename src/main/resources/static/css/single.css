@@ -1,0 +1,6 @@
+.editable:empty:before {
+    content: attr(data-placeholder);
+}
+#comment-section{
+    font-size:1rem;
+}

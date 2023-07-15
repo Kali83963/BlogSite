@@ -1,0 +1,12 @@
+.editable:empty:before {
+    content: attr(data-placeholder);
+}
+
+.editable{
+    font-size:2rem;
+}
+
+.tox-tinymce {
+      overflow: hidden !important;
+    }
+
