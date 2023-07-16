@@ -2,14 +2,17 @@ package com.kashif.BlogSite.service;
 
 
 import com.kashif.BlogSite.model.Account;
+import com.kashif.BlogSite.model.Comments;
 import com.kashif.BlogSite.model.Post;
 import com.kashif.BlogSite.repository.PostRepository;
+import com.kashif.BlogSite.response.CommentResponse;
 import com.kashif.BlogSite.response.PostRequest;
 import com.kashif.BlogSite.response.PostResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -28,7 +31,7 @@ public class PostService {
     }
 
     public List<PostResponse> getAll(){
-        List<Post> post = postRepository.findAll();
+        List<Post> post = postRepository.findAllByOrderByIdDesc();
         List<PostResponse> postResponses = post.stream().map(this::convertToPostResponse).collect(Collectors.toList());
 
 
@@ -99,7 +102,7 @@ public class PostService {
                 .title(post.getTitle())
                 .body(post.getBody())
                 .date(post.getCreatedAt())
-                .account(post.getAccount().getEmail())
+                .account(post.getAccount().getFullname())
                 .like(post.getLikes())
 //                .comments(post.getComments().size())
                 .build();
@@ -111,5 +114,22 @@ public class PostService {
 
         postRepository.delete(post);
         return true;
+    }
+
+    public List<PostResponse> getpostByUser(String token){
+        Account useraccount = jwtService.extractAccount(token);
+        List<Post> posts = postRepository.findByAccountOrderByIdDesc(useraccount);
+
+        List<PostResponse> postResponses = new ArrayList<>();
+
+        for(Post post : posts){
+            PostResponse postResponse = convertToPostResponse(post);
+
+            postResponses.add(postResponse);
+        }
+
+        return postResponses;
+
+
     }
 }

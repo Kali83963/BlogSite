@@ -35,9 +35,14 @@ public class Post {
 
 
 
-    @OneToMany(mappedBy = "post")
+    @OneToMany(mappedBy = "post",cascade = CascadeType.ALL, orphanRemoval = true)
     @OrderBy("id")
     private List<Comments> comments = new ArrayList<>();;
+
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL, orphanRemoval = true)
+    @OrderBy("id")
+    private List<Likes> like = new ArrayList<>();
+
 
     @Column(columnDefinition = "integer default 0")
     private int likes;

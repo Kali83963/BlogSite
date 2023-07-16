@@ -10697,12 +10697,14 @@ header.masthead .site-heading {
 }
 header.masthead .page-heading,
 header.masthead .site-heading {
-  text-align: center;
+
+  //text-align: center;
 }
+
 header.masthead .page-heading h1, header.masthead .page-heading .h1,
 header.masthead .site-heading h1,
 header.masthead .site-heading .h1 {
-  font-size: 3rem;
+  font-size: 2rem;
 }
 header.masthead .page-heading .subheading,
 header.masthead .site-heading .subheading {
@@ -10744,7 +10746,7 @@ header.masthead .post-heading .meta a {
   header.masthead .page-heading h1, header.masthead .page-heading .h1,
   header.masthead .site-heading h1,
   header.masthead .site-heading .h1 {
-    font-size: 5rem;
+    font-size: 3rem;
   }
   header.masthead .post-heading h1, header.masthead .post-heading .h1 {
     font-size: 3.5rem;

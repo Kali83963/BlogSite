@@ -1,0 +1,68 @@
+.profile-header{
+    height:300px;
+    background-size: cover;
+    background-color: #474d53;
+    background-attachment: scroll;
+
+}
+
+  header.profile-header .page-heading,
+  header.profile-header .post-heading,
+  header.profile-header .site-heading {
+    color: #fff;
+  }
+ 
+  
+  header.profile-header .page-heading h1, header.profile-header .page-heading .h1,
+  header.profile-header .site-heading h1,
+  header.profile-header .site-heading .h1 {
+    font-size: 2rem;
+  }
+  header.profile-header .page-heading .subheading,
+  header.profile-header .site-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 300;
+    line-height: 1.1;
+    display: block;
+    margin-top: 0.625rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.profile-header .post-heading h1, header.profile-header .post-heading .h1 {
+    font-size: 2.25rem;
+  }
+  header.profile-header .post-heading .meta,
+  header.profile-header .post-heading .subheading {
+    line-height: 1.1;
+    display: block;
+  }
+  header.profile-header .post-heading .subheading {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin: 0.75rem 0 2rem;
+    font-family: "Open Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.profile-header .post-heading .meta {
+    font-size: 1.25rem;
+    font-weight: 300;
+    font-style: italic;
+    font-family: "Lora", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  }
+  header.profile-header .post-heading .meta a {
+    color: #fff;
+  }
+  @media (min-width: 992px) {
+    header.profile-header {
+      
+    }
+    header.profile-header .page-heading h1, header.profile-header .page-heading .h1,
+    header.profile-header .site-heading h1,
+    header.profile-header .site-heading .h1 {
+      font-size: 3rem;
+    }
+    header.profile-header .post-heading h1, header.profile-header .post-heading .h1 {
+      font-size: 3.5rem;
+    }
+    header.profile-header .post-heading .subheading {
+      font-size: 1.875rem;
+    }
+  }

@@ -3,6 +3,8 @@ package com.kashif.BlogSite.model;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Data
@@ -17,6 +19,8 @@ public class Likes {
     private Long id;
 
     @ManyToOne
+    @NonNull
+    @JoinColumn(name = "post_id",referencedColumnName = "id",nullable = false)
     private Post post;
 
     @ManyToOne

@@ -39,7 +39,7 @@ public class SecurityConfig {
 
         http
                 .csrf(csrf -> csrf.disable())
-                .authorizeHttpRequests(auth->auth.requestMatchers("/auth/**").permitAll().requestMatchers("/home/","/js/**","/css/**","/**").permitAll().anyRequest().authenticated())
+                .authorizeHttpRequests(auth->auth.requestMatchers("/auth/**").permitAll().requestMatchers("/home/","/js/**","/css/**","/**","/post/{id}","/comment/{id}").permitAll().anyRequest().authenticated())
                 .exceptionHandling(ex->ex.authenticationEntryPoint(point))
                 .sessionManagement(session->session.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
         http.addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);

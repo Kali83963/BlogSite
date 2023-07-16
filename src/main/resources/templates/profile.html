@@ -1,10 +1,57 @@
 <!DOCTYPE html>
-<html lang="en">
+<html layout:decorate = "base">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="/js/profile.js"></script>
+    <link href="/css/profile.css" rel="stylesheet">
+    <!-- <script src="../static/js/home.js"></script> -->
 </head>
 <body>
 
+<div layout:fragment = "content">
+    <header class="profile-header">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7 w-100">
+                    
+                    <div class="d-flex flex-row">
+                        <div class="ms-4 mt-5 d-flex flex-column" style="width: 150px;">
+                            <img src="image/profile-photos/1/user2.png"
+                                    alt="Generic placeholder image" class="img-fluid img-thumbnail mt-4 mb-2"
+                                    style="width: 150px; z-index: 1">
+
+                          </div>
+                        <div class="site-heading ms-3" style="margin-top: 130px;">
+                            <h5 id="name">Kashif Ali</h5>
+                            <p class="subheading" style="margin:0;" id="email">New York</p>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container px-4 px-lg-5">
+        <div class="row gx-4 gx-lg-5 justify-content-center">
+            <div class="col-md-10 col-lg-8 col-xl-7" id="main">
+
+
+            </div>
+        </div>
+    </div>
+    <!-- Footer-->
+    <footer class="border-top">
+        <div class="container px-4 px-lg-5">
+            <div class="row gx-4 gx-lg-5 justify-content-center">
+                <div class="col-md-10 col-lg-8 col-xl-7" >
+                    <div class="small text-center text-muted fst-italic">Copyright &copy; Your Website 2023</div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+</div>
 </body>
 </html>

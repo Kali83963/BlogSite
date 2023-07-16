@@ -3,6 +3,7 @@ package com.kashif.BlogSite.controller;
 
 import com.kashif.BlogSite.model.Account;
 import com.kashif.BlogSite.model.Post;
+import com.kashif.BlogSite.response.CommentResponse;
 import com.kashif.BlogSite.response.PostRequest;
 import com.kashif.BlogSite.response.PostResponse;
 import com.kashif.BlogSite.service.JwtService;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -65,7 +67,7 @@ public class PostController {
                     .comments(post.getComments().size())
                     .date(post.getCreatedAt())
                     .hasuserlikepost(isliked)
-                    .account(post.getAccount().getEmail())
+                    .account(post.getAccount().getFullname())
                     .build());
         }
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
@@ -131,4 +133,14 @@ public class PostController {
         return ResponseEntity.ok(post);
 //
     }
+
+    @GetMapping("/user")
+    public ResponseEntity<List<PostResponse>> getpostByUser(HttpServletRequest request){
+        String headerValue = request.getHeader("Authorization").substring(7);
+
+        List<PostResponse> postResponseList = postService.getpostByUser(headerValue);
+
+        return ResponseEntity.ok(postResponseList);
+    }
+
 }

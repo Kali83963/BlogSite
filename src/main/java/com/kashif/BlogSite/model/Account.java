@@ -53,6 +53,8 @@ public class Account implements UserDetails {
        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
+    public String getFullname(){ return firstname + " " + lastname;}
+
     @Override
     public String getUsername() {
         return email;
@@ -61,7 +63,6 @@ public class Account implements UserDetails {
     @Override
     public String getPassword() {
 
-        System.out.println(password);
         return password;
     }
 

@@ -1,7 +1,7 @@
 
 let isliked = false;
 document.addEventListener("DOMContentLoaded",function(){
-
+    
     const urlparam = new URLSearchParams(window.location.search)
 
     const id = urlparam.get("id");
@@ -13,19 +13,21 @@ document.addEventListener("DOMContentLoaded",function(){
     const like_button = document.getElementById("like-button");
     let like_icon = document.getElementById("like-icon");
     const comment_button = document.getElementById("comment-sumbit");
-//    console.log(like_count);
        const comment_div = document.getElementById("comment-div");
-
+    const deletepost = document.getElementById("delete");
     let comments_count = document.getElementsByClassName("comments-count")[0];
-    console.log(comments_count)
+
+    const controllerdiv = document.getElementById("b-controller");
+
+    
+
+
+
     $.ajax({
         url:"http://localhost:8080/post/"+id,
         method:"GET",
-        headers: {
-            "Authorization": "Bearer " + localStorage.getItem("access_token")
-        },
         success:function(response){
-            
+            console.log(response)
             let maindiv = document.getElementById("main-content");
             let headerdiv = document.getElementById("header");
 
@@ -36,7 +38,6 @@ document.addEventListener("DOMContentLoaded",function(){
                             const formattedDate = date.toLocaleDateString('en-US', options);
             const header = `<div class="post-heading">
                                 <h1>${response['title']}</h1>
-//                                <h2 class="subheading"></h2>
                                 <span class="meta">
                                     Posted by
                                     <a href="#!">${response["account"]}</a>
@@ -51,7 +52,15 @@ document.addEventListener("DOMContentLoaded",function(){
             like_count.innerText = response['like'];
             comments_count.innerText = response["comments"];
 
-            isliked = response['hasuserlikepost']
+            isliked = response['hasuserlikepost'];
+
+            if(localStorage.getItem('name') !== response['account']){
+                editbutton.style.display = 'none';
+                console.log("Here")
+                deletepost.style.display = 'none';
+                console.log(deletebutton)
+
+            }
 //            console.log(isliked)
 //            if(isliked){
 //
@@ -72,9 +81,6 @@ document.addEventListener("DOMContentLoaded",function(){
     $.ajax({
             url:"http://localhost:8080/comment/" +id,
             method:"GET",
-            headers: {
-                "Authorization": "Bearer " + localStorage.getItem("access_token")
-            },
             contentType: "application/json",
             success:function(response){
                 console.log(response)
@@ -192,6 +198,11 @@ function deletepost(id){
 
 function togglelike(id){
 
+
+    if(localStorage.getItem("access_token")== null){
+            window.location.href = "/login?callback=getpost?id="+id;
+        }
+
      let like_count = document.getElementsByClassName("likes-count")[0];
      let like_icon = document.getElementById("like-icon");
 
@@ -258,6 +269,10 @@ function autoExpand(div) {
 }
 
 function addcomment(id,comments_count){
+    if(localStorage.getItem("access_token")== null){
+                window.location.href = "/login?callback=getpost?id="+id;
+            }
+
     console.log("clicked")
     const content_div = document.getElementById("myDiv");
     const comment_div = document.getElementById("comment-div");

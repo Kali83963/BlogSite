@@ -1,12 +1,27 @@
 window.onload = (event) =>{
+
+    const namediv = document.getElementById("name");
+    const emaildiv = document.getElementById("email");
+
+    namediv.innerText = localStorage.getItem("name");
+    emaildiv.innerText = localStorage.getItem('email');
+
+
     $.ajax({
-        url: "http://localhost:8080/home/",
+        url: "http://localhost:8080/post/user",
         method: "GET",
+        headers: {
+                    "Authorization": "Bearer " + localStorage.getItem("access_token")
+                },
         success: function(response) {
             let maindiv = document.getElementById("main");
+
+
+
             let element = "";
             for( data in response){
                 const content =  splitTags(response[data]["body"])
+
                 let text = ''
                 if(content.length!=0){
                     for(i=0;i<2;i++){
@@ -16,11 +31,19 @@ window.onload = (event) =>{
                         else{
                             break;
                         }
+
                     }
                 }
                 else{
                     text = response[data]["body"]
+
                 }
+
+
+
+
+
+
                 const dateString = response[data]["date"];
                 const date = new Date(dateString);
                 const options = { year: 'numeric', month: 'long', day: 'numeric' };
@@ -38,13 +61,19 @@ window.onload = (event) =>{
                        </div>
                        <!-- Divider-->
                        <hr class="my-4" />`
+
                 maindiv.innerHTML += element;
+
+
+
             }
         },
         error: function(xhr, status, error) {
             console.log(error);
         }
     });
+
+
     console.log("Page Has Been Loaded")
 };
 
